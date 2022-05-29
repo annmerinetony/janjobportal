@@ -1,0 +1,35 @@
+from django.db import models
+class Jobs(models.Model):
+    job_title_name=models.CharField(max_length=150)
+    company_name=models.CharField(max_length=150)
+    location=models.CharField(max_length=100)
+    salary=models.PositiveIntegerField(null=True)
+    experience=models.PositiveIntegerField(default=0)
+orm queries:-
+1)ormqueries for creating new job object
+modelname.objects.create(f=v)
+Jobs.objects.create(job_title_name="python dev",company_name="infy",location="tvm",salary=45000,experience=3)
+
+2)fetching all records from database:-
+qs=Jobs.objects.all()
+3) fetching a specific object:-
+qs=Jobs.objects.get(id=5)
+print qs
+qs.company_name
+qs.location
+4)updating data:-
+qs=Jobs.objects.get(id=2)
+qs.experience=5
+qs.save()
+5)deleting data:-
+qs=Jobs.objects.get(id=2)
+qs.delete()
+
+6)filter:-
+qs=Jobs.objects.filter(company_name="infy")
+
+
+
+print jobs with exper >1
+# exp__lte=1   exp__lt=1
+# exp__gte=1   exp__gt=1
